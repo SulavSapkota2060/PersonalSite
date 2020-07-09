@@ -1,0 +1,33 @@
+{% extends 'blogSite/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'blogSite/navbar.html' %}<br>
+ 
+  <form  method="GET" action="">
+    <h3 class="display-4" style="position:absolute;">All Posts</h3>
+    {% csrf_token %}
+    <h3 style="padding-top: 20px;" align='right'>{{sform.form.title}}
+    <input type="submit" class="btn btn-dark" value="Search"></h3>
+  </form>
+  <br>
+  <hr>
+<div class="row">
+    {% for i in posts %}
+
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{{i.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.title}}</h5>
+              <p class="card-text">{{i.content | truncatewords:'200'}}</p>
+              <a href="{% url 'content' i.id %}" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{%endblock%}

@@ -1,0 +1,28 @@
+{% extends 'blogSite/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'blogSite/navbar.html' %}
+<img style="width: 100%; height:auto;" src="{% static 'images/hELLO, I AM SULAV.png' %}"><br><br>
+
+<br>
+  <h3>Recent Posts</h3>
+<div class="row">
+    {% for i in posts %}
+
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{{i.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.title}}</h5>
+              <p class="card-text">{{i.content | truncatewords:'200'}}</p>
+              <a href="{% url 'content' i.id %}" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{%endblock%}

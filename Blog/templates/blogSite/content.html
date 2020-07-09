@@ -1,0 +1,48 @@
+{% extends 'blogSite/base.html' %}
+
+{% block content %}
+{% include 'blogSite/navbar.html' %}
+<br>
+<center>
+    <div class="card" style="width: 80%;">
+        <div class="card-title">
+            <h1 class="display-1">{{post.title}}</h1><br>
+            <i style="color: gray;">Posted On: {{post.date_created}}<br>
+                by Sulav Sapkota 👑</i>
+        </div>
+        <img src="{{post.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">{{post.content | linebreaks}}</p>
+        </div>
+    </div>
+    <br>
+    <div class="card" style="width:80%"><br>
+        <div class="card-title">
+            <h1 align='left' style = "font-family: 'Raleway', sans-serif;">&nbsp;&nbsp;Add Comment</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <span style="font-family: 'Raleway', sans-serif;">Name</span><br>
+                {{commentForm.name}}<br>
+                <span style="font-family: 'Raleway', sans-serif;">Email</span><br>
+                {{commentForm.email}}<br>
+                <span style="font-family: 'Raleway', sans-serif;">Comment</span><br>
+                {{commentForm.comment}}<br>
+                <input type="submit" class="btn btn-primary" value="Post">
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="card" style="width:80%;"><br>
+        <div class="card-title">
+            <h1 class="display-4" align='left'>&nbsp;&nbsp;All Comments</h1>
+            {% for i in allComments %}
+            <div class="card">
+                <div  class="card-title"><h5 style="padding-top: 20px;padding-left:40px;">{{i.name}}</h5></div>
+                <div class = 'card-content'><p align='left' style="align:left;float: left;" >{{i.comment | linebreaks}}</p></div><hr>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</center>
+
+{% endblock %}

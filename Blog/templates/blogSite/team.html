@@ -1,0 +1,22 @@
+{% extends 'blogSite/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'blogSite/navbar.html' %}
+
+<div class = 'header'>
+    <h1 class="display-1" align= 'center'>TEAM</h1>
+</div>
+<center>
+<div class="card" style="width: 18rem;">
+    <img style="border-radius: 50%;" src="{% static 'images/photo-1582266255765-fa5cf1a1d501.jpg' %}" height='300' alt="...">
+    <br>
+    <h2 class="card-title">Sulav Sapkota</h2>
+    <div class="card-body">
+    <p>CEO of 🤔</p>
+    </div>
+  </div>
+</center>
+<!--Members-->
+{% endblock %}

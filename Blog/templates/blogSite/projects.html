@@ -1,0 +1,51 @@
+{% extends 'blogSite/base.html' %}
+
+
+{% block content %}
+{% include 'blogSite/navbar.html' %}
+
+
+<div class='header'><br>
+    <h1 align='center' class="display-3">WHAT ARE WE WORKING ON?</h1><br>
+</div>
+<!--Current Project-->
+<div id="current_Project">
+    {% for i in acp %}
+    <center>
+    <div class="card" style="max-width: 80%;">
+        <h6 class="card-header">Active Project</h6>
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{i.image.url}}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.title}}</h5>
+                    <p class="card-text">{{i.description}}</p>
+                    <a href='{{i.github_link}}' class="btn btn-dark"><i class="fa fa-github"></i> View Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+    {% endfor %}
+</div><br><br>
+<h1>Accomplished Projects</h1>
+<div id='accomplishedProject'>
+    <div class="row">
+        {% for i in accp %}
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.description}}</p>
+                <a href='{{i.github_link}}' class="btn btn-dark"><i class="fa fa-github"></i>View Repository</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!--Accomplished Projects-->
+{% endblock %}
